@@ -1,0 +1,7 @@
+.DS_Store
+*.py
+__pycache__/
+.env
+abc-agreement/
+Iron_House_Pricing_Sheet_*
+pricing-v*.html
