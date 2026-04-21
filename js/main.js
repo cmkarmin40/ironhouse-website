@@ -264,10 +264,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const interest = document.getElementById('interest');
       const message = document.getElementById('message');
       const subject = document.querySelector('input[name="_subject"]');
+      const trainerField = document.getElementById('trainer-field');
 
       if (interest) interest.value = 'personal-training';
       if (message) message.value = `I'd like to book a free consult with ${trainer}.`;
       if (subject) subject.value = `Trainer Consult Request — ${trainer}`;
+      if (trainerField) trainerField.value = trainer;
     });
   });
 
