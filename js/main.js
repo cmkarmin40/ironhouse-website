@@ -258,6 +258,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- Trainer consult pre-fill ---
+  const trainerEmails = {
+    'Daniel Lott': 'macrodosemuscle@gmail.com',
+    'AmberLynn': 'tamber548@gmail.com',
+    'Priscilla': 'priscillatamborini@gmail.com',
+    'Julian Magdaleno': 'coachjulian.enigma@gmail.com',
+    'Stella': 'Luzabinuman@hotmail.com'
+  };
+
   document.querySelectorAll('[data-trainer]').forEach(link => {
     link.addEventListener('click', () => {
       const trainer = link.getAttribute('data-trainer');
@@ -265,11 +273,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const message = document.getElementById('message');
       const subject = document.querySelector('input[name="_subject"]');
       const trainerField = document.getElementById('trainer-field');
+      const trainerCc = document.getElementById('trainer-cc');
 
       if (interest) interest.value = 'personal-training';
       if (message) message.value = `I'd like to book a free consult with ${trainer}.`;
       if (subject) subject.value = `Trainer Consult Request — ${trainer}`;
       if (trainerField) trainerField.value = trainer;
+      if (trainerCc && trainerEmails[trainer]) trainerCc.value = trainerEmails[trainer];
     });
   });
 
