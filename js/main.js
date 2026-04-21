@@ -257,6 +257,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // --- Trainer consult pre-fill ---
+  document.querySelectorAll('[data-trainer]').forEach(link => {
+    link.addEventListener('click', () => {
+      const trainer = link.getAttribute('data-trainer');
+      const interest = document.getElementById('interest');
+      const message = document.getElementById('message');
+      const subject = document.querySelector('input[name="_subject"]');
+
+      if (interest) interest.value = 'personal-training';
+      if (message) message.value = `I'd like to book a free consult with ${trainer}.`;
+      if (subject) subject.value = `Trainer Consult Request — ${trainer}`;
+    });
+  });
+
   // --- Smooth scroll for anchor links ---
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
