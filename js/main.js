@@ -259,7 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Trainer consult pre-fill ---
   const trainerEmails = {
-    'Daniel Lott': 'macrodosemuscle@gmail.com',
+    'Daniel Lott': 'Wmlott@gmail.com',
     'AmberLynn': 'tamber548@gmail.com',
     'Priscilla': 'priscillatamborini@gmail.com',
     'Julian Magdaleno': 'coachjulian.enigma@gmail.com',
