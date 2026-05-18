@@ -121,6 +121,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (res.ok) {
           submitBtn.textContent = 'MESSAGE SENT!';
           submitBtn.style.background = '#27ae60';
+
+          // Fire conversion events
+          if (typeof fbq !== 'undefined') fbq('track', 'Contact');
+          if (typeof gtag !== 'undefined') gtag('event', 'contact');
+
           setTimeout(() => {
             submitBtn.textContent = originalText;
             submitBtn.style.background = '';
@@ -220,6 +225,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (res.ok) {
           submitBtn.textContent = 'DOWNLOADING YOUR PASS!';
           submitBtn.style.background = '#27ae60';
+
+          // Fire conversion events
+          if (typeof fbq !== 'undefined') fbq('track', 'Lead');
+          if (typeof gtag !== 'undefined') gtag('event', 'generate_lead');
 
           // Auto-download the 3-Day Pass PDF
           const link = document.createElement('a');
