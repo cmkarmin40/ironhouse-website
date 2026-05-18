@@ -266,6 +266,43 @@ document.addEventListener('DOMContentLoaded', () => {
     'Stella': 'Luzabinuman@hotmail.com'
   };
 
+  const interestSelect = document.getElementById('interest');
+  const trainerSelectGroup = document.getElementById('trainer-select-group');
+  const trainerSelect = document.getElementById('trainer-select');
+
+  // Show/hide trainer dropdown when interest changes
+  if (interestSelect && trainerSelectGroup) {
+    interestSelect.addEventListener('change', () => {
+      if (interestSelect.value === 'personal-training') {
+        trainerSelectGroup.style.display = '';
+      } else {
+        trainerSelectGroup.style.display = 'none';
+        if (trainerSelect) trainerSelect.value = '';
+        // Clear trainer hidden fields when switching away from PT
+        const tf = document.getElementById('trainer-field');
+        const tc = document.getElementById('trainer-cc');
+        if (tf) tf.value = '';
+        if (tc) tc.value = '';
+      }
+    });
+  }
+
+  // Sync trainer dropdown selection to hidden fields
+  if (trainerSelect) {
+    trainerSelect.addEventListener('change', () => {
+      const trainer = trainerSelect.value;
+      const trainerField = document.getElementById('trainer-field');
+      const trainerCc = document.getElementById('trainer-cc');
+      const subject = document.querySelector('input[name="_subject"]');
+
+      if (trainerField) trainerField.value = trainer;
+      if (trainerCc) trainerCc.value = trainer ? (trainerEmails[trainer] || '') : '';
+      if (subject && trainer) subject.value = `Trainer Consult Request — ${trainer}`;
+      else if (subject && !trainer) subject.value = 'New Contact Form - Iron House Gym';
+    });
+  }
+
+  // Trainer card "Book a Free Consult" buttons
   document.querySelectorAll('[data-trainer]').forEach(link => {
     link.addEventListener('click', () => {
       const trainer = link.getAttribute('data-trainer');
@@ -275,7 +312,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const trainerField = document.getElementById('trainer-field');
       const trainerCc = document.getElementById('trainer-cc');
 
-      if (interest) interest.value = 'personal-training';
+      if (interest) {
+        interest.value = 'personal-training';
+        // Show the trainer dropdown and pre-select this trainer
+        if (trainerSelectGroup) trainerSelectGroup.style.display = '';
+        if (trainerSelect) trainerSelect.value = trainer;
+      }
       if (message) message.value = `I'd like to book a free consult with ${trainer}.`;
       if (subject) subject.value = `Trainer Consult Request — ${trainer}`;
       if (trainerField) trainerField.value = trainer;
