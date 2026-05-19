@@ -124,7 +124,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
           // Fire conversion events
           if (typeof fbq !== 'undefined') fbq('track', 'Contact');
-          if (typeof gtag !== 'undefined') gtag('event', 'contact');
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'conversion', {
+              'send_to': 'AW-18128746695/KKyeCOXX7qQcEMfxusRD',
+              'value': 1.0,
+              'currency': 'USD'
+            });
+          }
 
           setTimeout(() => {
             submitBtn.textContent = originalText;
@@ -228,7 +234,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
           // Fire conversion events
           if (typeof fbq !== 'undefined') fbq('track', 'Lead');
-          if (typeof gtag !== 'undefined') gtag('event', 'generate_lead');
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'conversion', {
+              'send_to': 'AW-18128746695/KKyeCOXX7qQcEMfxusRD',
+              'value': 1.0,
+              'currency': 'USD'
+            });
+          }
 
           // Auto-download the 3-Day Pass PDF
           const link = document.createElement('a');
