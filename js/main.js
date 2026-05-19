@@ -282,6 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const trainerEmails = {
     'Daniel Lott': 'Wmlott@gmail.com',
     'AmberLynn': 'tamber548@gmail.com',
+    'Amber Shields': 'Coach@movewithsila.com',
     'Priscilla': 'priscillatamborini@gmail.com',
     'Julian Magdaleno': 'coachjulian.enigma@gmail.com',
     'Stella': 'Luzabinuman@hotmail.com'
