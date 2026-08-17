@@ -423,6 +423,108 @@
     </div>
   </section>
 
+  <!-- ======== EVERCLIMB FITNESS ======== -->
+  <section id="everclimb" class="section-dark">
+    <div class="container">
+      <div class="everclimb-banner fade-in">
+        <img src="images/everclimb-logo.png" alt="EverClimb Fitness">
+      </div>
+      <p class="section-subtitle fade-in everclimb-mission">
+        At EverClimb, we believe there's value in the process, not just the finish line. Our team brings together diverse coaching backgrounds to provide personalized training, nutrition, accountability, and support for every level of athlete and lifestyle. From bodybuilding and contest prep to body recomposition, fat loss, muscle building, endurance, and overall health, we meet you where you are and build a plan around where you want to go.
+      </p>
+
+      <div class="trainers-grid everclimb-grid">
+
+        <div class="trainer-card fade-in">
+          <div class="trainer-photo">
+            <img src="images/everclimb-tim.jpg" alt="Tim — Founder, Owner, Coach at EverClimb Fitness" loading="lazy">
+          </div>
+          <div class="trainer-info">
+            <h3>Tim</h3>
+            <p class="trainer-role">Founder &middot; Owner &middot; Coach</p>
+            <p class="trainer-bio">Nationally qualified NPC Classic Physique competitor and bachelor-prepared RN &amp; EMT with a background in emergency and critical care medicine. Blends competitive experience, clinical knowledge, and evidence-based training for physique and performance.</p>
+            <a href="#everclimb-contact" class="btn btn-outline btn-small" data-ec-trainer="Tim">Book a Free Consult with Tim</a>
+          </div>
+        </div>
+
+        <div class="trainer-card fade-in">
+          <div class="trainer-photo">
+            <img src="images/everclimb-cailey.jpg" alt="Cailey — Owner, Coach at EverClimb Fitness" loading="lazy">
+          </div>
+          <div class="trainer-info">
+            <h3>Cailey</h3>
+            <p class="trainer-role">Owner &middot; Coach</p>
+            <p class="trainer-bio">NASM Certified Personal Trainer and Certified Nutrition Coach with a background in endurance training and marathon racing. Specializes in lifestyle coaching, nutrition, strength, and endurance for sustainable long-term results.</p>
+            <a href="#everclimb-contact" class="btn btn-outline btn-small" data-ec-trainer="Cailey">Book a Free Consult with Cailey</a>
+          </div>
+        </div>
+
+        <div class="trainer-card fade-in">
+          <div class="trainer-photo">
+            <img src="images/everclimb-zaeem.jpg" alt="Zaeem — IFBB Classic Physique Pro, Partner &amp; Coach at EverClimb Fitness" loading="lazy">
+          </div>
+          <div class="trainer-info">
+            <h3>Zaeem</h3>
+            <p class="trainer-role">IFBB Classic Physique Pro &middot; Partner &middot; Coach</p>
+            <p class="trainer-bio">IFBB Classic Physique Pro with 10+ years in bodybuilding. Specializes in contest prep, off-season development, and lifestyle coaching &mdash; building elite physiques and the mental discipline that carries into every part of life.</p>
+            <a href="#everclimb-contact" class="btn btn-outline btn-small" data-ec-trainer="Zaeem">Book a Free Consult with Zaeem</a>
+          </div>
+        </div>
+
+        <div class="trainer-card fade-in">
+          <div class="trainer-photo">
+            <img src="images/everclimb-jon.jpg" alt="Jon — Coach at EverClimb Fitness" loading="lazy">
+          </div>
+          <div class="trainer-info">
+            <h3>Jon</h3>
+            <p class="trainer-role">Coach</p>
+            <p class="trainer-bio">Nationally qualified NPC Men's Physique competitor, triathlete, and ultrarunner with 6+ years across strength, endurance, and physique. Combines all three for muscle building, fat loss, and sustainable results through evidence-based programming.</p>
+            <a href="#everclimb-contact" class="btn btn-outline btn-small" data-ec-trainer="Jon">Book a Free Consult with Jon</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- EverClimb dedicated contact form (separate routing from Iron House) -->
+      <div class="everclimb-contact-wrap fade-in" id="everclimb-contact">
+        <h3 class="everclimb-contact-heading">Book Your Free Consult</h3>
+        <p class="everclimb-contact-sub">Tell us who you'd like to work with and what you're after. An EverClimb coach will reach out.</p>
+        <form class="contact-form" id="everclimb-form" action="https://formspree.io/f/REPLACE_WITH_EVERCLIMB_ENDPOINT" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="ec-name">Name</label>
+              <input type="text" id="ec-name" name="name" required placeholder="Your name">
+            </div>
+            <div class="form-group">
+              <label for="ec-phone">Phone</label>
+              <input type="tel" id="ec-phone" name="phone" placeholder="(904) 555-1234">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="ec-email">Email</label>
+            <input type="email" id="ec-email" name="email" required placeholder="you@email.com">
+          </div>
+          <div class="form-group">
+            <label for="ec-trainer">Which coach?</label>
+            <select id="ec-trainer" name="trainer">
+              <option value="">No preference / any coach</option>
+              <option value="Tim">Tim &mdash; Founder, Owner, Coach</option>
+              <option value="Cailey">Cailey &mdash; Owner, Coach</option>
+              <option value="Zaeem">Zaeem &mdash; IFBB Pro, Partner, Coach</option>
+              <option value="Jon">Jon &mdash; Coach</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="ec-message">Your goals</label>
+            <textarea id="ec-message" name="message" placeholder="Contest prep, fat loss, muscle building, endurance, general health &mdash; whatever you're after."></textarea>
+          </div>
+          <input type="hidden" name="_subject" id="ec-subject" value="New EverClimb Consult Request">
+          <button type="submit" class="btn btn-primary">Send Consult Request</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
   <!-- ======== FACILITIES / AMENITIES ======== -->
   <section id="facilities">
     <div class="container">

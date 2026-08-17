@@ -347,6 +347,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // --- EverClimb form: safety guard if Formspree endpoint hasn't been set yet ---
+  const ecForm = document.getElementById('everclimb-form');
+  if (ecForm && ecForm.action.includes('REPLACE_WITH_EVERCLIMB_ENDPOINT')) {
+    ecForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert("Consult form is being set up. Please email EverClimbFitness@gmail.com or call Iron House at (904) 329-1040 to book. We'll respond within 24 hours.");
+    });
+  }
+
+  // --- EverClimb trainer buttons: pre-fill EverClimb form ---
+  document.querySelectorAll('[data-ec-trainer]').forEach(link => {
+    link.addEventListener('click', () => {
+      const trainer = link.getAttribute('data-ec-trainer');
+      const trainerSel = document.getElementById('ec-trainer');
+      const message = document.getElementById('ec-message');
+      const subject = document.getElementById('ec-subject');
+      if (trainerSel) trainerSel.value = trainer;
+      if (message && !message.value) message.value = `I'd like to book a free consult with ${trainer}.`;
+      if (subject) subject.value = `EverClimb Consult Request — ${trainer}`;
+    });
+  });
+
   // --- Smooth scroll for anchor links ---
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
