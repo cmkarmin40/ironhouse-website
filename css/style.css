@@ -1771,7 +1771,8 @@ section {
     flex: 0 1 calc(50% - 12px);
   }
 }
-.everclimb-contact-wrap {
+.everclimb-contact-wrap,
+.trainer-contact-wrap {
   max-width: 640px;
   margin: 80px auto 0;
   padding: 40px;
@@ -1779,13 +1780,15 @@ section {
   border: 1px solid var(--border);
   border-radius: 4px;
 }
-.everclimb-contact-heading {
+.everclimb-contact-heading,
+.trainer-contact-heading {
   text-align: center;
   font-family: var(--font-heading);
   font-size: 1.6rem;
   margin-bottom: 8px;
 }
-.everclimb-contact-sub {
+.everclimb-contact-sub,
+.trainer-contact-sub {
   text-align: center;
   color: var(--text-secondary);
   margin-bottom: 28px;

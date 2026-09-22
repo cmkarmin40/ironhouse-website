@@ -324,28 +324,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Trainer card "Book a Free Consult" buttons
+  // Trainer card "Book a Free Consult" buttons → pre-fill dedicated trainer contact form
   document.querySelectorAll('[data-trainer]').forEach(link => {
     link.addEventListener('click', () => {
       const trainer = link.getAttribute('data-trainer');
-      const interest = document.getElementById('interest');
-      const message = document.getElementById('message');
-      const subject = document.querySelector('input[name="_subject"]');
-      const trainerField = document.getElementById('trainer-field');
-      const trainerCc = document.getElementById('trainer-cc');
-
-      if (interest) {
-        interest.value = 'personal-training';
-        // Show the trainer dropdown and pre-select this trainer
-        if (trainerSelectGroup) trainerSelectGroup.style.display = '';
-        if (trainerSelect) trainerSelect.value = trainer;
-      }
-      if (message) message.value = `I'd like to book a free consult with ${trainer}.`;
+      const trainerSel = document.getElementById('th-trainer');
+      const message = document.getElementById('th-message');
+      const subject = document.getElementById('th-subject');
+      const cc = document.getElementById('th-cc');
+      if (trainerSel) trainerSel.value = trainer;
+      if (message && !message.value) message.value = `I'd like to book a free consult with ${trainer}.`;
       if (subject) subject.value = `Trainer Consult Request — ${trainer}`;
-      if (trainerField) trainerField.value = trainer;
-      if (trainerCc && trainerEmails[trainer]) trainerCc.value = trainerEmails[trainer];
+      if (cc) cc.value = trainerEmails[trainer] || '';
     });
   });
+
+  // Trainer contact form: keep _cc synced when user picks a trainer directly
+  const thTrainerSelect = document.getElementById('th-trainer');
+  if (thTrainerSelect) {
+    thTrainerSelect.addEventListener('change', () => {
+      const trainer = thTrainerSelect.value;
+      const subject = document.getElementById('th-subject');
+      const cc = document.getElementById('th-cc');
+      if (cc) cc.value = trainer ? (trainerEmails[trainer] || '') : '';
+      if (subject) subject.value = trainer
+        ? `Trainer Consult Request — ${trainer}`
+        : 'New Trainer Consult Request - Iron House Gym';
+    });
+  }
 
   // --- EverClimb form: safety guard if Formspree endpoint hasn't been set yet ---
   const ecForm = document.getElementById('everclimb-form');

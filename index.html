@@ -355,7 +355,7 @@
             <h3>AmberLynn</h3>
             <p class="trainer-role">Strength &amp; Conditioning Coach</p>
             <p class="trainer-bio">Navy veteran and Natural Pro Bodybuilder with a degree in exercise science. Designs effective, tailored programs for peak performance or general fitness.</p>
-            <a href="#contact" class="btn btn-outline btn-small" data-trainer="AmberLynn">Book a Free Consult</a>
+            <a href="#trainer-contact" class="btn btn-outline btn-small" data-trainer="AmberLynn">Book a Free Consult</a>
           </div>
         </div>
 
@@ -367,7 +367,7 @@
             <h3>Amber Shields</h3>
             <p class="trainer-role">Strength &amp; Performance Coach</p>
             <p class="trainer-bio">M.S. Exercise Science with 8+ years coaching. NASM-CPT, NSCA-CSCS, Precision Nutrition L1, PreScript L1 certified. Competitive powerlifter — 1st place Master's I and Open 75kg at North of the Border.</p>
-            <a href="#contact" class="btn btn-outline btn-small" data-trainer="Amber Shields">Book a Free Consult</a>
+            <a href="#trainer-contact" class="btn btn-outline btn-small" data-trainer="Amber Shields">Book a Free Consult</a>
           </div>
         </div>
 
@@ -379,7 +379,7 @@
             <h3>Daniel Lott</h3>
             <p class="trainer-role">Personal Trainer &amp; Master Herbalist</p>
             <p class="trainer-bio">15+ years in fitness. Certified trainer and Master Herbalist specializing in body mechanics and functional programming for all ages and experience levels.</p>
-            <a href="#contact" class="btn btn-outline btn-small" data-trainer="Daniel Lott">Book a Free Consult</a>
+            <a href="#trainer-contact" class="btn btn-outline btn-small" data-trainer="Daniel Lott">Book a Free Consult</a>
           </div>
         </div>
 
@@ -391,7 +391,7 @@
             <h3>Stella</h3>
             <p class="trainer-role">IFBB Pro &middot; Personal Trainer &middot; Posing Coach</p>
             <p class="trainer-bio">IFBB Pro and dedicated personal trainer specializing in fitness, nutrition, and wellness. Passionate about helping clients reach their health and physique goals.</p>
-            <a href="#contact" class="btn btn-outline btn-small" data-trainer="Stella">Book a Free Consult</a>
+            <a href="#trainer-contact" class="btn btn-outline btn-small" data-trainer="Stella">Book a Free Consult</a>
           </div>
         </div>
 
@@ -403,7 +403,7 @@
             <h3>Priscilla</h3>
             <p class="trainer-role">Personal Trainer &amp; Posing Coach</p>
             <p class="trainer-bio">NASM-certified trainer, NPC Bikini competitor, and neuromuscular massage therapist. UCLA grad with D1 sports medicine experience. Integrates fitness, nutrition, and recovery.</p>
-            <a href="#contact" class="btn btn-outline btn-small" data-trainer="Priscilla">Book a Free Consult</a>
+            <a href="#trainer-contact" class="btn btn-outline btn-small" data-trainer="Priscilla">Book a Free Consult</a>
           </div>
         </div>
 
@@ -415,10 +415,51 @@
             <h3>Julian Magdaleno</h3>
             <p class="trainer-role">Personal Trainer &amp; Bodybuilding Specialist</p>
             <p class="trainer-bio">Certified Personal Trainer and competitive bodybuilder. Specializes in hypertrophy, strength, and physique development through structured, progressive programming.</p>
-            <a href="#contact" class="btn btn-outline btn-small" data-trainer="Julian Magdaleno">Book a Free Consult</a>
+            <a href="#trainer-contact" class="btn btn-outline btn-small" data-trainer="Julian Magdaleno">Book a Free Consult</a>
           </div>
         </div>
 
+      </div>
+
+      <!-- Iron House trainer dedicated contact form (mirrors EverClimb) -->
+      <div class="trainer-contact-wrap fade-in" id="trainer-contact">
+        <h3 class="trainer-contact-heading">Book Your Free Consult</h3>
+        <p class="trainer-contact-sub">Tell us which trainer you'd like to work with and what you're after.</p>
+        <form class="contact-form" id="trainer-form" action="https://formspree.io/f/mnjlkvbd" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="th-name">Name</label>
+              <input type="text" id="th-name" name="name" required placeholder="Your name">
+            </div>
+            <div class="form-group">
+              <label for="th-phone">Phone</label>
+              <input type="tel" id="th-phone" name="phone" placeholder="(904) 555-1234">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="th-email">Email</label>
+            <input type="email" id="th-email" name="email" required placeholder="you@email.com">
+          </div>
+          <div class="form-group">
+            <label for="th-trainer">Which trainer?</label>
+            <select id="th-trainer" name="trainer">
+              <option value="">No preference / any trainer</option>
+              <option value="AmberLynn">AmberLynn &mdash; Strength &amp; Conditioning</option>
+              <option value="Amber Shields">Amber Shields &mdash; Strength &amp; Performance</option>
+              <option value="Daniel Lott">Daniel Lott &mdash; Personal Trainer</option>
+              <option value="Stella">Stella &mdash; IFBB Pro &amp; Posing Coach</option>
+              <option value="Priscilla">Priscilla &mdash; Trainer &amp; Posing Coach</option>
+              <option value="Julian Magdaleno">Julian Magdaleno &mdash; Bodybuilding</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="th-message">Your goals</label>
+            <textarea id="th-message" name="message" placeholder="Strength, hypertrophy, weight loss, contest prep — whatever you're after."></textarea>
+          </div>
+          <input type="hidden" name="_subject" id="th-subject" value="New Trainer Consult Request - Iron House Gym">
+          <input type="hidden" name="_cc" id="th-cc" value="">
+          <button type="submit" class="btn btn-primary">Send Consult Request</button>
+        </form>
       </div>
     </div>
   </section>
