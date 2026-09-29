@@ -132,8 +132,11 @@
         <form class="modal-form" id="pass-form" action="https://formspree.io/f/xbdqvyag" method="POST">
           <input type="text" name="name" placeholder="Enter Your Name" required>
           <input type="tel" name="phone" placeholder="Enter Your Phone" required>
+          <p class="modal-disclaimer modal-sms-consent">By entering your phone number you agree to receive texts about your pass from Iron House Gym. Message and data rates may apply. Reply STOP to opt out.</p>
           <input type="email" name="email" placeholder="Enter your email here" required>
           <input type="hidden" name="_subject" value="New 3-Day Pass Request - Iron House Gym">
+          <input type="hidden" name="source" id="pass-source" value="direct">
+          <input type="hidden" name="opened_via" id="pass-opened-via" value="auto">
           <button type="submit">Claim</button>
         </form>
       </div>

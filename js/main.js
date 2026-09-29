@@ -165,9 +165,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const openPassBtn = document.getElementById('open-pass-modal');
   const passForm = document.getElementById('pass-form');
 
-  function openModal() {
+  // Persist UTM source on page load so the pass form can attribute the visit
+  // even when the modal opens later in the session.
+  try {
+    const params = new URLSearchParams(location.search);
+    const src = params.get('utm_source') || params.get('utm_medium') || sessionStorage.getItem('ih_source') || 'direct';
+    const campaign = params.get('utm_campaign') || '';
+    const stored = campaign ? `${src} / ${campaign}` : src;
+    sessionStorage.setItem('ih_source', stored);
+    const srcField = document.getElementById('pass-source');
+    if (srcField) srcField.value = stored;
+  } catch (e) {}
+
+  function openModal(via) {
     passModal.classList.add('active');
     document.body.style.overflow = 'hidden';
+    const openedVia = document.getElementById('pass-opened-via');
+    if (openedVia) openedVia.value = via === 'auto' ? 'auto' : 'click';
   }
 
   function closeModal() {
@@ -178,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Auto-show popup after 5 seconds (only once per session)
   if (passModal && !sessionStorage.getItem('passModalShown')) {
     setTimeout(() => {
-      openModal();
+      openModal('auto');
       sessionStorage.setItem('passModalShown', 'true');
     }, 5000);
   }
@@ -201,16 +215,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Open modal from banner button
   if (openPassBtn) {
-    openPassBtn.addEventListener('click', openModal);
+    openPassBtn.addEventListener('click', () => openModal('click'));
   }
 
   // Open modal from any element with data-open-pass
   document.querySelectorAll('[data-open-pass]').forEach(el => {
     el.addEventListener('click', (e) => {
       e.preventDefault();
-      openModal();
+      openModal('click');
     });
   });
+
+  // Ensure source is fresh at submit time (in case UTMs were only seen on a
+  // different page in the same session).
+  if (passForm) {
+    passForm.addEventListener('submit', () => {
+      try {
+        const srcField = document.getElementById('pass-source');
+        const stored = sessionStorage.getItem('ih_source');
+        if (srcField && stored) srcField.value = stored;
+      } catch (e) {}
+    }, { capture: true });
+  }
 
   // Pass form submission via Formspree
   if (passForm) {
