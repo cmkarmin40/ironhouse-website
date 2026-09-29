@@ -248,9 +248,16 @@ document.addEventListener('DOMContentLoaded', () => {
       submitBtn.disabled = true;
 
       try {
+        const fd = new FormData(passForm);
+        // Explicit yes/no so downstream (SMS service) can distinguish
+        // "declined consent" from "field absent". An unchecked checkbox
+        // is otherwise omitted from FormData entirely.
+        const consentBox = document.getElementById('pass-sms-consent');
+        fd.set('sms_consent', consentBox && consentBox.checked ? 'yes' : 'no');
+
         const res = await fetch(passForm.action, {
           method: 'POST',
-          body: new FormData(passForm),
+          body: fd,
           headers: { 'Accept': 'application/json' }
         });
 
