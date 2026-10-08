@@ -318,7 +318,8 @@ document.addEventListener('DOMContentLoaded', () => {
     'Amber Shields': 'Coach@movewithsila.com',
     'Priscilla': 'priscillatamborini@gmail.com',
     'Julian Magdaleno': 'coachjulian.enigma@gmail.com',
-    'Stella': 'Luzabinuman@hotmail.com'
+    'Stella': 'Luzabinuman@hotmail.com',
+    'Andrew Clayton': 'andrew@firstcalledstrength.com'
   };
 
   const interestSelect = document.getElementById('interest');
