@@ -313,6 +313,60 @@ h4 { font-size: 1.2rem; }
   z-index: 0;
 }
 
+.hours-bar {
+  position: absolute;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0 10px;
+  padding: 10px 20px;
+  background: rgba(10, 10, 10, 0.85);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  text-align: center;
+  text-decoration: none;
+  transition: background var(--transition);
+}
+.hours-bar:hover {
+  background: rgba(10, 10, 10, 0.95);
+}
+.hours-bar strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+.hours-bar .hours-bar-item strong:first-child {
+  color: var(--accent);
+}
+.hours-bar-sep {
+  color: rgba(255, 255, 255, 0.25);
+}
+.hours-bar-phone {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .hours-bar {
+    font-size: 0.78rem;
+    padding: 8px 14px;
+    gap: 0 6px;
+  }
+  .hours-bar-sep {
+    display: none;
+  }
+  .hours-bar-item {
+    display: block;
+    width: 100%;
+  }
+}
+
 .hero-bg::after {
   content: '';
   position: absolute;
