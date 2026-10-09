@@ -314,18 +314,15 @@ h4 { font-size: 1.2rem; }
 }
 
 .hours-bar {
-  position: absolute;
-  top: var(--header-height);
-  left: 0;
-  right: 0;
-  z-index: 3;
+  position: relative;
+  margin-top: var(--header-height);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   gap: 0 10px;
   padding: 10px 20px;
-  background: rgba(10, 10, 10, 0.85);
+  background: var(--bg-primary);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   color: var(--text-secondary);
   font-size: 0.85rem;
@@ -335,7 +332,7 @@ h4 { font-size: 1.2rem; }
   transition: background var(--transition);
 }
 .hours-bar:hover {
-  background: rgba(10, 10, 10, 0.95);
+  background: var(--bg-card);
 }
 .hours-bar strong {
   color: var(--text-primary);
