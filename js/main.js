@@ -177,6 +177,18 @@ document.addEventListener('DOMContentLoaded', () => {
     if (srcField) srcField.value = stored;
   } catch (e) {}
 
+  // Persist utm_content (ad-level attribution) separately. Mirrors the
+  // source pattern so it survives the 5-second modal delay and the modal
+  // being opened later in the same session. Empty when absent — don't
+  // write "undefined" into the submission.
+  try {
+    const params = new URLSearchParams(location.search);
+    const content = params.get('utm_content') || sessionStorage.getItem('ih_utm_content') || '';
+    if (content) sessionStorage.setItem('ih_utm_content', content);
+    const contentField = document.getElementById('pass-utm-content');
+    if (contentField) contentField.value = content;
+  } catch (e) {}
+
   function openModal(via) {
     passModal.classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -226,14 +238,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Ensure source is fresh at submit time (in case UTMs were only seen on a
-  // different page in the same session).
+  // Ensure source + utm_content are fresh at submit time (in case UTMs were
+  // only seen on a different page in the same session).
   if (passForm) {
     passForm.addEventListener('submit', () => {
       try {
         const srcField = document.getElementById('pass-source');
         const stored = sessionStorage.getItem('ih_source');
         if (srcField && stored) srcField.value = stored;
+      } catch (e) {}
+      try {
+        const contentField = document.getElementById('pass-utm-content');
+        const storedContent = sessionStorage.getItem('ih_utm_content');
+        if (contentField && storedContent) contentField.value = storedContent;
       } catch (e) {}
     }, { capture: true });
   }
