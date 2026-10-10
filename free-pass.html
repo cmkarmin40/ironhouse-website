@@ -161,6 +161,7 @@
           </label>
           <input type="hidden" name="_subject" value="New 3-Day Pass Request (free-pass page) - Iron House Gym">
           <input type="hidden" name="source" id="free-pass-source" value="direct">
+          <input type="hidden" name="utm_content" id="free-pass-utm-content" value="">
           <input type="hidden" name="opened_via" id="free-pass-opened-via" value="page">
           <button type="submit" class="btn btn-primary">Claim My Free 3-Day Pass</button>
         </form>
@@ -240,6 +241,17 @@
         if (srcField) srcField.value = stored;
       } catch (e) {}
 
+      // Persist utm_content (ad-level attribution) separately. Mirrors the
+      // modal pattern in js/main.js so attribution stays interpretable
+      // across both forms (same Formspree endpoint).
+      try {
+        var cparams = new URLSearchParams(location.search);
+        var content = cparams.get('utm_content') || sessionStorage.getItem('ih_utm_content') || '';
+        if (content) sessionStorage.setItem('ih_utm_content', content);
+        var contentField = document.getElementById('free-pass-utm-content');
+        if (contentField) contentField.value = content;
+      } catch (e) {}
+
       form.addEventListener('submit', async function(e) {
         e.preventDefault();
 
@@ -256,6 +268,13 @@
             var s = sessionStorage.getItem('ih_source');
             if (s) fd.set('source', s);
           } catch (e2) {}
+
+          // Same for utm_content — may have been captured on an earlier
+          // page in the session rather than on /free-pass directly.
+          try {
+            var sc = sessionStorage.getItem('ih_utm_content');
+            if (sc) fd.set('utm_content', sc);
+          } catch (e3) {}
 
           // Explicit yes/no so the SMS service sees a positive decline
           var consentBox = document.getElementById('free-pass-sms-consent');
